@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import tuningReducer from '../features/tuning/tuningSlice';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    tuning: tuningReducer,
   },
 });
