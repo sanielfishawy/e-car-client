@@ -41,6 +41,15 @@ export default class SlipGroups{
         return mfs.map( (mf) => new SlipGroups(this.withMinFreq(mf)))
     }
 
+
+    /**
+     * @param {String} id 
+     * @returns {SlipGroup}
+     */
+    slipGroupWithId(id){
+        return this.slipGroups.find( sg => sg.id === id)
+    }
+
     get combinedDataForChart(){
         const h = {}
         for (const sg of this.slipGroups){
@@ -50,6 +59,10 @@ export default class SlipGroups{
                     h[k] = {}
                 }
                 h[k][sg.chartTorqueDataKey] = p.torque
+                if (sg.isMaxPoint(p.slipFract)) h[k].isMaxTorque = true
+                // if (sg.isNinetyPercentPoint(p.slipFract)) h[k].isNinetyPercentTorque = true
+                h[k].slipForMaxTorque = sg.slipForMaxTorque
+                h[k].slipForNinetyPercentTorque = sg.slipForNinetyPercentTorque
             }
         }
         const a = []

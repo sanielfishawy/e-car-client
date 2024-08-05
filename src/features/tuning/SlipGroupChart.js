@@ -24,8 +24,29 @@ export default function SlipGroupChart(props){
                 dataKey={sg.chartTorqueDataKey}
                 stroke="#8884d8"
                 key={sg.chartTorqueDataKey}
+                dot={<CustomDot sgId={sg.id}/>}
             />
         })
+    }
+
+    const CustomDot = (props) => {
+        const {cx, cy, payload} = props;
+        const {sgId} = props;
+        const isMaxPoint = sgs.slipGroupWithId(sgId).isMaxPoint(payload.slipFract)
+        const isNinetyPercentPoint = sgs.slipGroupWithId(sgId).isNinetyPercentPoint(payload.slipFract)
+      
+        let r
+        if (isMaxPoint && isNinetyPercentPoint){
+            r =  <circle cx={cx} cy={cy} r={4} stroke="none" fill="purple"/> 
+        } else if (isMaxPoint){
+            r =  <circle cx={cx} cy={cy} r={4} stroke="none" fill="red"/> 
+        } else if (isNinetyPercentPoint){
+            r =  <circle cx={cx} cy={cy} r={4} stroke="none" fill="blue"/> 
+        } else {
+            r =  <circle cx={cx} cy={cy} r={3} stroke="none" fill="grey"/> 
+        }
+
+        return r
     }
 
     return (
@@ -35,7 +56,6 @@ export default function SlipGroupChart(props){
             <ResponsiveContainer width="100%" height={400}>
                 <LineChart data={sgs.combinedDataForChart} >
                     {getLines()}
-                    <Line type="monotone" dataKey="torque" stroke="#8884d8" />
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                     <XAxis 
                         dy={10}

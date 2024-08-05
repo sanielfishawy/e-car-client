@@ -23,6 +23,11 @@ describe('SlipGroups', () => {
         expect(r[0]).toBeInstanceOf(SlipGroup)
     })
 
+    it('slipGroupWithId', () => {
+        r = sgs.slipGroupWithId(sgs.slipGroups[0].id)
+        expect(r).toBeInstanceOf(SlipGroup)
+    })
+
     it('groupedByMinFreq', () => {
         r = sgs.groupedByMinFreq
         expect(r.length).toBeGreaterThan(0)
@@ -33,11 +38,10 @@ describe('SlipGroups', () => {
         expect(sgs.id).toBe(JSON.stringify(sgs.minFreqs))
     })
 
-    it.only('dataForChart', () => {
+    it('dataForChart', () => {
         const sgs0 = sgs.groupedByMinFreq[0]
         r = sgs0.combinedDataForChart
         expect(r.length).toBeGreaterThan(0)
         expect(r[0].slipFract).toBeDefined()
-        console.log(r)
     })
 })
