@@ -1,7 +1,7 @@
 import * as Config from '../config/config.js'
 
 export default class Domains{
-    static LOCAL_MOTOR_SERVER_DOMAIN = 'localhost:8000'
+    static LOCAL_MOTOR_SERVER_DOMAIN = '192.168.1.167:8000'
 
     static getProtocol(){
         let p

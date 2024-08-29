@@ -24,7 +24,7 @@ export default function TuningWindow(props){
     })
 
     return (
-        <div className="p-5">
+        <div className='m-0 p-2'>
             <h1>Tuning</h1>
             <h2>Torque vs Slip</h2>
             {slipGroupCharts}

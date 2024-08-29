@@ -1,9 +1,9 @@
-import { Container } from "react-bootstrap"
+import {Container} from 'react-bootstrap'
 
 export default function SpeedoWindow(props){
 
     return (
-        <Container className="p-5">
+        <Container className='m-2 p-0'>
             <h1>Speedo</h1>
         </Container>
     )
