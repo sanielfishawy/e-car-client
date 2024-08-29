@@ -22,11 +22,37 @@ export default function SlipGroupChart(props){
             return <Line 
                 type="monotone" 
                 dataKey={sg.chartTorqueDataKey}
-                stroke="#8884d8"
+                stroke={getStrokeForAmplitudeFract(sg.amplitudeFract)}
                 key={sg.chartTorqueDataKey}
                 dot={<CustomDot sgId={sg.id}/>}
             />
         })
+    }
+
+    const getStrokeForAmplitudeFract = (amplitudeFract) => {
+        const amp = parseFloat(amplitudeFract.toFixed(1))
+        switch (amp) {
+            case 0.2:
+                return "red"
+            case 0.3:
+                return "green"
+            case 0.4:
+                return "blue"
+            case 0.5:
+                return "red"
+            case 0.6:
+                return "green"
+            case 0.7:
+                return "blue"
+            case 0.8:
+                return "red"
+            case 0.9:
+                return "green"
+            case 1.0:
+                return "blue"
+            default:
+                return "grey"
+        }
     }
 
     const CustomDot = (props) => {

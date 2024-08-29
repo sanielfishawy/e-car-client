@@ -9,7 +9,14 @@ export default function TuningWindow(props){
 
     const dispatch = useDispatch()
     useEffect( () => {
-        dispatch(TuningSlice.fetchSlipGroups())
+        const fetchData = async () => {
+            dispatch(TuningSlice.fetchSlipGroups())
+        }
+        fetchData()
+
+        // const intervalId = setInterval(fetchData, 1000); // Fetch every 5 seconds
+        // return () => clearInterval(intervalId);
+
     }, [dispatch])
     
     const slipGroupCharts = slipGroups.groupedByMinFreq.map((sgs) => {
