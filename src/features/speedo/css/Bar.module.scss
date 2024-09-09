@@ -1,0 +1,18 @@
+.bar-title{
+    font-size: 1.0rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.bar-outer{
+    margin: 0px auto;
+    position: relative;
+    border: 1px solid #ddd;
+}
+
+.bar-inner{
+    position: absolute;
+    bottom: 0; 
+    background-color: #0C57D0;
+    margin:-1px;
+}
